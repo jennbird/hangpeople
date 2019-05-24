@@ -14,7 +14,7 @@ function init(){
 	window.addEventListener("keyup", function(event){
 
 		if (event.keyCode >= 65 && event.keyCode <= 90){
-			var letter = String.fromCharCode(event.keyCode);
+			var letter = String.fromCharCode(event.keyCode).toLowerCase();
 			console.log(letter);
 
 			if (lettersGuessed.indexOf(letter) != -1){
@@ -22,7 +22,7 @@ function init(){
 			} else {
 				lettersGuessed.push(letter)
 
-				console.log(lettersGuessed)
+				drawWord();
 			}
 
 
@@ -35,6 +35,21 @@ function init(){
 	})
 }	
 
+function drawWord(){
+
+	var currentlyGuessedWord = "";
+
+
+	for(var i = 0; i < chosenWord.length; i++){
+		if (lettersGuessed.indexOf(chosenWord[i]) == -1 ){
+			currentlyGuessedWord += "_ ";
+		} else {
+			currentlyGuessedWord += chosenWord[i] + " ";
+		}
+	}
+
+	console.log(currentlyGuessedWord);
+}
 
 init()
 
